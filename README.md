@@ -48,7 +48,7 @@
 <tr style="height: 18px;">
 <td style="height: 18px; width: 79px;">Web-2</td>
 <td style="height: 18px; width: 75px;">Server</td>
-<td style="height: 18px; width: 290px;">Public: 40.86.164.99 Private:10.0.0.170</td>
+<td style="height: 18px; width: 290px;">Public: 40.86.164.99 Private: 10.0.0.170</td>
 <td style="height: 18px; width: 141px;">ubuntu</td>
 </tr>
 <tr style="height: 18px;">
@@ -128,4 +128,44 @@
 </li>
 </ul>
 <p>*The <a href="https://github.com/felixwubootcamp/Homework_13-Github/blob/main/Screenshot%202021-05-23%20133737.png" target="_blank" rel="nofollow">following screenshot</a> displays the result of running&nbsp;<code>docker ps</code>&nbsp;after successfully configuring the ELK instance.</p>
+<h3>Target Machines &amp; Beats</h3>
+<p>This ELK server is configured to monitor the following machines:</p>
+<ul>
+<li>Web-1, 10.1.0.160</li>
+<li>Web-2, 10.1.0.170</li>
+</ul>
+<p>We have installed the following Beats on these machines:</p>
+<ul>
+<li>Filebeats</li>
+<li>Metricbeats</li>
+</ul>
+<p>These Beats allow us to collect the following information from each machine:</p>
+<ul>
+<li>Filebeat collects system logs, which can be used to track system events, etc.</li>
+<li>Metricbeat collects system and service metric data, which we can use to see CPU usage, etc.</li>
+</ul>
+<h3>Using the Playbook</h3>
+<p>In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned:</p>
+<p>SSH into the control node and follow the steps below:</p>
+<ul>
+<li>
+<p>Copy the filebeat and metricbeat config files to /etc/ansible/[your_dir]/[your-file-name].</p>
+</li>
+<li>
+<p>Update the config files to include your ELK-server's private IP address. (filebeat-config.yml: lines 1106 &amp; 1806, metricbeat-config.yml: lines 62 &amp; 96)</p>
+</li>
+<li>
+<p>Run the playbook, and navigate to http://[ELK-server-public-IP]:5601/app/kibana to check that the installation worked as expected. /etc/ansible/host should include:</p>
+</li>
+</ul>
+<ul>
+<li>
+<p>[webservers] [10.1.0.9] ansible_python_interpreter=/usr/bin/python3 [10.1.0.10] ansible_python_interpreter=/usr/bin/python3 [10.1.0.11] ansible_python_interpreter=/usr/bin/python3</p>
+<p>[elk] [10.0.0.4] ansible_python_interpreter=/usr/bin/python3</p>
+</li>
+</ul>
+<p>Run the playbook, and SSH into the Elk vm, then run docker ps to check that the installation worked as expected. Playbook: install_elk.yml Location: /etc/ansible/install_elk.yml Navigate to http://[your.ELK-VM.External.IP]:5601/app/kibana to confirm ELK and kibana are running. You may need to try from multiple web browsers Click 'Explore On Your Own' and you should see the following:</p>
 <p>&nbsp;</p>
+<p>&nbsp;</p>
+
+<p><a href="https://photos.google.com/u/1/photo/AF1QipMSL24cbp2RDRA2VpclTsNwiGPF1CN_eseuwXVM" target="_blank" rel="noopener noreferrer"><img src="https://photos.google.com/u/1/photo/AF1QipMSL24cbp2RDRA2VpclTsNwiGPF1CN_eseuwXVM" alt="KIBANA /></a></p>
